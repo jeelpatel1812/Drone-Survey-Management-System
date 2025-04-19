@@ -34,7 +34,7 @@ npm run dev
 ```
 
 
-## Documentation for diagrams, snapshots and artifacts
+## Documentation including system diagrams, snapshots, and design artifacts.
 ```
 https://docs.google.com/document/d/1BbkgLZSUoUcHpkCR9JJzwH-i3EB8IieVDGkICUsR20k/edit?usp=sharing
 ```
