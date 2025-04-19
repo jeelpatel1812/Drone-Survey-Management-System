@@ -1,0 +1,68 @@
+.mission-monitor-container {
+    display: flex;
+    height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f9f9f9;
+  }
+  
+  .mission-log-panel {
+    width: 15%;
+    padding: 20px;
+    border-right: 1px solid #ccc;
+    overflow-y: auto;
+    background-color: #fff;
+  }
+  
+  .panel-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 16px;
+  }
+  
+  .mission-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .mission-item {
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-color: #f0f0f0;
+  }
+  
+  .mission-item:hover {
+    background-color: #e2e8f0;
+  }
+  
+  .mission-item.selected {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .mission-name {
+    display: block;
+    font-weight: 600;
+  }
+  
+  .drone-name {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .map-view-panel {
+    flex: 1;
+    position: relative;
+  }
+  
+  .map-placeholder {
+    padding: 20px;
+    text-align: center;
+    font-size: 18px;
+    color: #888;
+  }
+  
