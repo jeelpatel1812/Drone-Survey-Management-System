@@ -10,8 +10,6 @@ const addDroneController = AsyncHandler(async(req, res)=>{
       throw new ApiError(400, "All field are required.")
   }
 
-  const isDroneExist = await Drone.findOne({name});
-  if(isDroneExist) throw new ApiError(409, "User already exist with this email.");
   
   const drone = await Drone.create({
       name,

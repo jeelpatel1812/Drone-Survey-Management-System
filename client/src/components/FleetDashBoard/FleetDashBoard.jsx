@@ -6,7 +6,7 @@ export default function FleetDashboard() {
     const [drones, setDrones] = useState([]);
     const [newDrone, setNewDrone] = useState({
       name: '',
-      status: '',
+      status: 'available',
       batteryLevel: '',
       location: { lat: '', lng: '' },
     });
@@ -39,7 +39,7 @@ export default function FleetDashboard() {
 
           if(response){
             setDrones([...drones, { ...newDrone }]);
-            setNewDrone({ name: '', status: '', batteryLevel: '', name: '' });
+            setNewDrone({ name: '', status: 'available', batteryLevel: '', name: '' });
           }
           
       }
@@ -91,7 +91,7 @@ export default function FleetDashboard() {
               <input type="text" name="name" placeholder="Drone Name" value={newDrone.name} onChange={handleChange} required />
               <input type="text" name="model" placeholder="Drone Model" value={newDrone.model} onChange={handleChange} required />
               <input type="number" name="batteryLevel" placeholder="Battery (%)"  min={1} max={100}  value={newDrone.batteryLevel} onChange={handleChange} required />
-              <select type="text" name="status" placeholder="Status"value={status} onChange={handleChange} required>
+              <select type="text" name="status" placeholder="Status" value={newDrone.status} onChange={handleChange} required>
                 <option value="available">Available</option>
                 <option value="in-mission">In-Mission</option>
                 <option value="maintenance">Maintenance</option>

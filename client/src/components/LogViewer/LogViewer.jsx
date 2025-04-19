@@ -32,7 +32,7 @@ const LogViewer = ({ missionId, status }) => {
     <h3 className="log-title">Real-time logs</h3>
     <div className="mission-log-container">
       <div className="log-header">
-        <span>Mission Id</span>
+        {/* <span>Mission Id</span> */}
         <span>Time</span>
         <span>Message</span>
         <span>Latitude</span>

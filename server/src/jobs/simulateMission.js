@@ -9,6 +9,8 @@ import {
   COVERAGE_AREA_DEFAULT
 } from '../constants.js';
 
+const runningSimulations = new Map();
+
 export const simulateMission = async (missionId) => {
   const mission = await Mission.findById(missionId);
   if (!mission) throw new Error('Mission not found');
@@ -30,6 +32,12 @@ export const simulateMission = async (missionId) => {
 
   console.log(`[Simulation] Mission ${mission._id} started.`);
 
+
+  if (runningSimulations.has(missionId)) {
+    console.log(`Simulation already running for mission ${missionId}`);
+    return;
+  }
+
   const simulationInterval = setInterval(async () => {
     try {
       // Complete mission
@@ -41,22 +49,26 @@ export const simulateMission = async (missionId) => {
         drone.status = 'available';
         await drone.save();
 
-        await Report.create({
-          missionId: mission._id,
-          mission: mission.name,
-          droneId: drone._id,
-          startTime: mission.scheduledTime,
-          endTime: new Date(),
-          duration: Math.round((Date.now() - new Date(mission.scheduledTime)) / 1000),
-          distance: calculateTotalDistance(flightPath),
-          coverageArea: COVERAGE_AREA_DEFAULT,
-          batteryConsumption : index * BATTERY_DRAIN_PER_STEP,
-          status: mission.status,
-          summary: `${mission.name} completed successfully.`
-        });
+        const existingReport = await Report.findOne({ missionId: mission._id });
+        if (!existingReport) {
+          await Report.create({
+            missionId: mission._id,
+            mission: mission.name,
+            droneId: drone._id,
+            startTime: mission.scheduledTime,
+            endTime: new Date(),
+            duration: Math.round((Date.now() - new Date(mission.scheduledTime)) / 1000),
+            distance: calculateTotalDistance(flightPath),
+            coverageArea: COVERAGE_AREA_DEFAULT,
+            batteryConsumption : index * BATTERY_DRAIN_PER_STEP,
+            status: mission.status,
+            summary: `${mission.name} completed successfully.`
+          });
+        }
 
         console.log(`[Simulation] Mission ${mission._id} completed.`);
         clearInterval(simulationInterval);
+        runningSimulations.delete(missionId);
         return;
       }
 
@@ -92,8 +104,10 @@ export const simulateMission = async (missionId) => {
     } catch (err) {
       console.error(`[Simulation] Error in mission ${mission._id}:`, err.message);
       clearInterval(simulationInterval);
+      runningSimulations.delete(missionId);
     }
   }, SIMULATION_INTERVAL);
+  runningSimulations.set(missionId, simulationInterval);
 };
 
 const calculateTotalDistance = (path) => {
