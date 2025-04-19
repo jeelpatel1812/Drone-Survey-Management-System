@@ -1,0 +1,109 @@
+.compose-mail-button{
+    border: 2px solid transparent;
+    border-radius: 12px;
+}
+
+.sidebar-icon {
+    height: 24px;
+    width: 24px;
+}
+
+.sidebar-item {
+    cursor: pointer;
+}
+
+/* Sidebar container */
+.sidebar {
+    width: 240px;
+    background-color: #2c3e50;
+    height: 100vh;
+    color: white;
+    padding-top: 20px;
+    position: fixed;
+}
+
+/* Compose button styling */
+.compose-mail-container {
+    padding: 0 16px;
+}
+
+.compose-mail-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.compose-mail-button .compose-icon {
+    margin-right: 8px;
+}
+
+/* Sidebar list styling */
+.sidebar-list {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.sidebar-item {
+    padding: 12px 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar-item:hover {
+    background-color: #34495e;
+}
+
+/* Sidebar icon and text styling */
+.sidebar-icon {
+    margin-right: 16px;
+    font-size: 18px;
+}
+
+.sidebar-text {
+    font-size: 16px;
+}
+
+
+.sidebar-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidebar-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border-radius: 6px;
+  }
+  
+  .sidebar-item:hover {
+    background-color: #445566;
+  }
+  
+  .sidebar-icon {
+    margin-right: 10px;
+  }
+  
+  .sidebar-text {
+    font-weight: 500;
+  }
+  
+  .sidebar-item.active {
+    background-color: #2e86de;
+    color: white;
+    font-weight: bold;
+  }
+  
